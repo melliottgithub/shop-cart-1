@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 // import { addBasket } from "../actions/addAction";
 import { getNumbers } from "../actions/getAction";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
   useEffect(() => {
@@ -15,13 +16,13 @@ const Navbar = (props) => {
         <h2>Shop</h2>
         <ul>
           <li>
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="/">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <a href="/">Cart: {props.basketProps.basketNumbers}</a>
+            <Link to="/cart">Cart: {props.basketProps.basketNumbers}</Link>
           </li>
         </ul>
       </nav>
