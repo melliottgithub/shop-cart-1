@@ -1,13 +1,17 @@
 import React from "react";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
+import { Provider } from 'react-redux'
+import store from './store'
 
 const App = () => {
   return (
-    <div className="App">
-      <Navbar />
-      <Home />
-    </div>
+    <Provider store={store}>
+        <div className="App">
+          <Navbar />
+          <Home />
+        </div>
+    </Provider>
   );
 };
 

@@ -1,4 +1,6 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
+import { connect } from "react-redux";
+import { addBasket } from "../actions/addAction";
 
 const items = [
   { id: 1, src: 1, alt: "shirt1", shirt: "grey tshirt", price: "$15,00" },
@@ -7,12 +9,8 @@ const items = [
   { id: 4, src: 4, alt: "shirt4", shirt: "red tshirt", price: "$30,00" },
 ];
 
-const Home = () => {
-  const [basketNumbers, setBasketNumbers] = useState(0);
-
-  const addToBasket = () => {
-    console.log("Button clicked");
-  };
+const Home = (props) => {
+  console.log(props.addBasket);
 
   return (
     <Fragment>
@@ -22,7 +20,7 @@ const Home = () => {
           <h3>{item.shirt}</h3>
           <h3>{item.price}</h3>
 
-          <a onClick={() => addToBasket()} href="#">
+          <a onClick={props.addBasket} href="#g">
             Add to cart
           </a>
         </div>
@@ -31,4 +29,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default connect(null, { addBasket })(Home);

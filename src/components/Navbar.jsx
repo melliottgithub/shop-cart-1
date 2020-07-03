@@ -1,5 +1,8 @@
 import React from "react";
 
+import {connect} from 'react-redux'
+import { addBasket } from "../actions/addAction";
+
 const Navbar = () => {
   return (
     <header>
@@ -21,4 +24,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default connect(null,{addBasket}) (Navbar);
