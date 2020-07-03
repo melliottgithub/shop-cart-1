@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import {connect} from 'react-redux'
-import { addBasket } from "../actions/addAction";
+import { connect } from "react-redux";
+// import { addBasket } from "../actions/addAction";
+import { getNumbers } from "../actions/getAction";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  useEffect(() => {
+    getNumbers();
+  }, []);
+
   return (
     <header>
       <nav>
@@ -16,7 +21,7 @@ const Navbar = () => {
             <a href="/">About</a>
           </li>
           <li>
-            <a href="/">Cart</a>
+            <a href="/">Cart: {props.basketProps.basketNumbers}</a>
           </li>
         </ul>
       </nav>
@@ -24,4 +29,8 @@ const Navbar = () => {
   );
 };
 
-export default connect(null,{addBasket}) (Navbar);
+const mapStateToProps = (state) => ({
+  basketProps: state.basketState,
+});
+
+export default connect(mapStateToProps, { getNumbers })(Navbar);
